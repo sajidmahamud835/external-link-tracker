@@ -145,8 +145,12 @@ function elt_render_dashboard() {
 
 // Modify external links in content
 function elt_modify_external_links($content) {
-    $site_url = get_home_url();
-    $content = preg_replace_callback('/<a\s+href="(https?:\/\/(?!' . preg_quote($site_url, '/') . ')[^"]+)"/i', function ($matches) {
+    // Get only the site's hostname (e.g., "yoursite.com")
+    $site_host = parse_url(get_home_url(), PHP_URL_HOST);
+
+    // Use regular expression to modify external links, excluding internal links by hostname
+    $content = preg_replace_callback('/<a\s+href="(https?:\/\/(?!' . preg_quote($site_host, '/') . ')[^"]+)"/i', function ($matches) {
+        // Encode the URL for safe redirection
         $encoded_url = urlencode($matches[1]);
         return '<a href="' . esc_url(home_url("/link?destination={$encoded_url}")) . '"';
     }, $content);
@@ -154,6 +158,7 @@ function elt_modify_external_links($content) {
     return $content;
 }
 add_filter('the_content', 'elt_modify_external_links');
+
 
 // Handle redirect and display warning page
 function elt_link_redirect() {
