@@ -1,0 +1,17 @@
+/* admin-dashboard.css */
+.wrap {
+    font-family: Arial, sans-serif;
+}
+table.widefat {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+table.widefat th, table.widefat td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+table.widefat tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
