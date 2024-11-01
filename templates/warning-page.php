@@ -28,7 +28,7 @@ $custom_body = get_option('elt_custom_body', '');
 <head>
     <meta charset="UTF-8">
     <title>External Link Warning</title>
-    <?php echo $custom_head; // Custom head code ?>
+    <?php echo esc_html($custom_head); // Custom head code ?>
     <style>
         body {
             display: flex;
@@ -117,6 +117,6 @@ $custom_body = get_option('elt_custom_body', '');
         </div>
         <a href="<?php echo esc_url($destination); ?>" class="redirect-btn">Continue Now</a>
     </div>
-    <?php echo $custom_body; // Custom body code ?>
+    <?php echo esc_html($custom_body); // Custom body code ?>
 </body>
 </html>

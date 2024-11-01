@@ -103,7 +103,7 @@ function elt_render_dashboard() {
                         'current' => $current_page,
                         'total' => $total_pages,
                     );
-                    echo paginate_links($pagination_args);
+                    echo esc_html(paginate_links($pagination_args));
                     ?>
                 </div>
             </div>
